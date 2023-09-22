@@ -61,6 +61,11 @@ function Login() {
             <button className='btn ml'>Login</button>
           </div>
         </form>
+
+        <div>
+          <span>No account?</span>&nbsp;
+          <a href="/signup">Sign up</a>
+        </div>
       </div>
       <Footer/>
     </div>

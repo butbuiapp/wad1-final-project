@@ -21,7 +21,9 @@ app.post("/signup", (req, res) => {
   user.id = uuidv4();
   db.push(user);
   saveData(COLLECTIONS.USERS);
-  res.send({ succes: true });
+
+  const token = createToken(user);
+  res.send({ succes: true, data: token });
 });
 
 app.post("/login", (req, res) => {
