@@ -63,6 +63,11 @@ function Login() {
             <Link to="/signup" className='ml'>Sign Up</Link>
           </div>
         </form>
+
+        <div>
+          <span>No account?</span>&nbsp;
+          <a href="/signup">Sign up</a>
+        </div>
       </div>
       <Footer/>
     </div>
