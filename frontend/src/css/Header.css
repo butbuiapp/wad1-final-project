@@ -1,0 +1,11 @@
+.header_container {
+  background-color: #99CCCC;
+  padding: 10px;
+  margin-bottom: 2rem;
+  font-size: 30px;
+  font-weight: bold;
+  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
