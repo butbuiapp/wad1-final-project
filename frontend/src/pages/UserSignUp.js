@@ -5,7 +5,7 @@ import DisplayMessage from '../components/DisplayMessage';
 import Footer from '../components/Footer';
 import UserService from '../services/UserService';
 
-function Login() {
+function UserSignUp() {
   const navigate = useNavigate();
   const [error, setError] = useState();
   const [user, setUser] = useState({ email: '', password: '', confirmPassword: '' });
@@ -117,4 +117,4 @@ function Login() {
   )
 }
 
-export default Login;
+export default UserSignUp;
