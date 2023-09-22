@@ -111,6 +111,11 @@ function UserSignUp() {
             <button className='btn ml'>Create account</button>
           </div>
         </form>
+
+        <div className='ml'>
+          <span>Already have an account?</span>&nbsp;
+          <a href="/login">Sign in</a>
+        </div>
       </div>
       <Footer/>
     </div>
