@@ -5,7 +5,11 @@ function useValidate() {
 
   function validate(product) {
     
-    if (product.name === "") {
+    if (product.name === "" ||
+        product.price === "" ||
+        product.origin === "" ||
+        product.instock === ""
+      ) {
       setError("All fields are required");
       return false;
     }
@@ -16,7 +20,6 @@ function useValidate() {
       setError("Price should be number");
       return false;
     }
-
     return true;
   }
 
@@ -24,7 +27,7 @@ function useValidate() {
 }
 
 function isNumber(value) {
-  const pattern = /^\d*$/;
+  const pattern = /^\d+([.]\d+)*$/;
   return pattern.test(value);
 }
 

@@ -1,9 +1,12 @@
 import '../css/Header.css';
+import { useNavigate } from 'react-router-dom';
 
 function Header() {
-  
-  function logoutHandler() {
+  const navigate = useNavigate();
 
+  function logoutHandler() {
+    localStorage.clear();
+    navigate("/login");
   }
 
   return (

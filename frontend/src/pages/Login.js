@@ -1,8 +1,7 @@
 import '../css/Login.css';
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import DisplayMessage from '../components/DisplayMessage';
-import Layout from '../components/Layout';
 import AuthService from '../services/AuthService';
 import Footer from '../components/Footer';
 
@@ -45,7 +44,7 @@ function Login() {
             </div>
             <div className='form_control'>
               <input type='email' name="email" onChange={changeHandler} required
-                placeholder='Email' className='input' />
+                className='input' />
             </div>
           </div>
           <div className='form_control_wrapper'>
@@ -54,11 +53,14 @@ function Login() {
             </div>
             <div className='form_control'>
               <input type='password' name="password" onChange={changeHandler}
-                required placeholder='Password' className='input' />
+                required className='input' />
             </div>
           </div>
           <div className='actions'>
             <button className='btn ml'>Login</button>
+          </div>
+          <div>
+            <Link to="/signup" className='ml'>Sign Up</Link>
           </div>
         </form>
       </div>

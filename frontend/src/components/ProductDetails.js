@@ -32,7 +32,7 @@ function ProductDetails({ product, onDeleteProduct }) {
         <div className='table-body-cell'>{product.origin}</div>
         <div className='table-body-cell'>{product.instock ? 'Yes' : 'No'}</div>
         <div className='table-body-cell'>
-          <button onClick={editHandler} className="btn btn-edit">Edit</button>
+          <button onClick={editHandler} className="btn btn-edit">&nbsp;Edit&nbsp;</button>
           <button onClick={deleteHandler} className="btn">Delete</button>
         </div>
       </div>

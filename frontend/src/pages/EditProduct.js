@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import '../css/Product.css';
 import DisplayMessage from '../components/DisplayMessage';
 import ProductService from '../services/ProductService';
@@ -16,6 +16,11 @@ function EditProduct() {
     origin: "",
     instock: ""
   });
+  const nameRef = useRef();
+
+  useEffect(() => {
+    nameRef.current.focus();
+  }, []);
 
   useEffect(() => {
     if (location.state) {
@@ -79,7 +84,7 @@ function EditProduct() {
               <label className="label">Name</label>
             </div>
             <div className="form_control">
-              <input type="text" name="name" value={product.name}
+              <input type="text" name="name" value={product.name} ref={nameRef}
                 onChange={changeHandler} required className="input-text" />
             </div>
           </div>
@@ -100,8 +105,7 @@ function EditProduct() {
             </div>
             <div className="form_control">
               <input type="text" name="origin" value={product.origin}
-                onChange={changeHandler} required
-                className="input-text" />
+                onChange={changeHandler} required className="input-text" />
             </div>
           </div>
 
@@ -119,7 +123,7 @@ function EditProduct() {
           </div>
           
           <div className="actions">
-            <button onClick={editProductHandler} className="btn btn-edit">Add</button>
+            <button onClick={editProductHandler} className="btn btn-edit">&nbsp;Edit&nbsp;</button>
             <button onClick={cancelHandler} className="btn btn-cancel ml">Cancel</button>
           </div>
         </form>

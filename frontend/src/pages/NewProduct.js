@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import '../css/Product.css';
 import DisplayMessage from '../components/DisplayMessage';
 import ProductService from '../services/ProductService';
@@ -14,10 +14,15 @@ function NewProduct() {
     origin: "",
     instock: true
   });
+  const nameRef = useRef();
+
+  useEffect(() => {
+    nameRef.current.focus();
+  }, []);
 
   async function addProductHandler(e) {
     e.preventDefault();
-    
+
     // validate
     if (validate(product)) {
       const res = await ProductService.addProduct({...product});
@@ -56,7 +61,7 @@ function NewProduct() {
               <label className="label">Name</label>
             </div>
             <div className="form_control">
-              <input type="text" name="name" value={product.name}
+              <input type="text" name="name" value={product.name} ref={nameRef}
                 onChange={changeHandler} required className="input-text" />
             </div>
           </div>
