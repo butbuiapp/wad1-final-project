@@ -1,6 +1,6 @@
 import '../css/Login.css';
 import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import DisplayMessage from '../components/DisplayMessage';
 import AuthService from '../services/AuthService';
 import Footer from '../components/Footer';

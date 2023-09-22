@@ -1,4 +1,3 @@
-import Layout from "../components/Layout";
 import ProductService from '../services/ProductService';
 import { useEffect, useState } from 'react';
 import { useNavigate } from "react-router-dom";
