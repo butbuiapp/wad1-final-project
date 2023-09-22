@@ -58,13 +58,9 @@ function Login() {
           </div>
           <div className='actions'>
             <button className='btn ml'>Login</button>
-          </div>
-          <div>
-            <Link to="/signup" className='ml'>Sign Up</Link>
-          </div>
+          </div>          
         </form>
-
-        <div>
+        <div className='ml'>
           <span>No account?</span>&nbsp;
           <a href="/signup">Sign up</a>
         </div>
