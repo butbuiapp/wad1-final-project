@@ -13,7 +13,7 @@
 .product .table-header-cell {
   display: table-cell;
   padding: 5px;
-  border-bottom: 1px solid gray;
+  border-bottom: 1px solid #e1e1e1;
 }
 
 .product .table-row {
@@ -23,7 +23,7 @@
 .product .table-body-cell {
   display: table-cell;
   padding: 10px;
-  border-bottom: 1px solid gray;
+  border-bottom: 1px solid #e1e1e1;
 }
 
 .add-product {

@@ -15,8 +15,8 @@ function ConfirmDialog(props) {
       <div className='backdrop'>
         <div className='modal'>
           <p>{props.message}</p>
-          <button className="btn btn-cancel medium" onClick={cancelHandler}>Cancel</button>
-          <button className="btn medium ml" onClick={confirmHandler}>Confirm</button>
+          <button className="btn btn-edit small" onClick={confirmHandler}>Confirm</button>
+          <button className="btn btn-cancel small ml" onClick={cancelHandler}>Cancel</button>          
         </div>
       </div>
     </div>
