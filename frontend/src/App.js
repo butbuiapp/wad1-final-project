@@ -1,7 +1,6 @@
 import './App.css';
 import router from './router/index';
 import { RouterProvider } from 'react-router-dom';
-import './config/axios';
 import Chatbot from './components/Chatbot';
 import { useEffect, useState } from 'react';
 

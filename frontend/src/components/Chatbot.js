@@ -36,7 +36,7 @@ function Chatbot() {
     setMessages([...messages,
     {
       type: 'outgoing',
-      message: "Hi there 👋<br />How can I help you today?"
+      message: "Hi there 👋How can I help you today?"
     }
     ]);
   }, [])
