@@ -2,12 +2,10 @@ import axios from 'axios';
 import { setToken } from '../config/axios';
 
 class ProductService {
-  constructor() {
-    setToken();
-  }
 
   async getProducts() {
     try {
+      setToken();
       const res = await axios.get('/products');
       return res.data;
     } catch (err) {
@@ -17,6 +15,7 @@ class ProductService {
 
   async addProduct(product) {
     try {
+      setToken();
       product.instock = /true/.test(product.instock);
       const res = await axios.post('/products', product);
       return res.data;
@@ -27,6 +26,7 @@ class ProductService {
 
   async updateProduct(product) {
     try {
+      setToken();
       const res = await axios.put(`/products/${product.id}`, product);
       return res.data;
     } catch (err) {
