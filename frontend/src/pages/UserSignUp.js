@@ -18,7 +18,7 @@ function UserSignUp() {
 
     const res = await UserService.singup({ email, password });
     if (res) {
-      if (res.success) {
+      if (res.succes) {
         localStorage.setItem('token', res.data);
         navigate('/');
       } else {
@@ -108,7 +108,7 @@ function UserSignUp() {
           </div>
 
           <div className='actions'>
-            <button className='btn ml'>Create account</button>
+            <button className='btn medium ml'>Create account</button>
           </div>
         </form>
       </div>

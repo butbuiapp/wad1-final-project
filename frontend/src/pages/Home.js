@@ -43,12 +43,12 @@ function Home() {
   }
 
   return (
-    <div>
+    <div style={{ padding: '1rem'}}>
       <div>
         {error && <DisplayMessage message={error} type="error" />}
       </div>
       <div>
-        <button onClick={goToAddProduct} className='btn'>Add New Product</button>
+        <button onClick={goToAddProduct} className='btn medium'>Add New Product</button>
       </div>
       <ProductList products={products} onDeleteProduct={deleteProduct} />
     </div>

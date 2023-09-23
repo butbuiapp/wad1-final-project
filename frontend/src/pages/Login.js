@@ -57,7 +57,7 @@ function Login() {
             </div>
           </div>
           <div className='actions'>
-            <button className='btn ml'>Login</button>
+            <button className='btn medium ml'>Login</button>
           </div>          
         </form>
         <div className='ml'>

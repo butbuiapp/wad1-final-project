@@ -11,11 +11,18 @@ function Header() {
 
   return (
     <div className='header_container'>
+      <a
+        href='/'
+        style={{
+        textDecoration: 'none',
+        fontSize: '1.3rem',
+        color: '#000'
+        }}
+      >
+        Inventory Manager
+      </a>
       <div>
-        PRODUCT MANAGEMENT SYSTEM
-      </div>
-      <div>
-        <button onClick={logoutHandler} className='btn'>Logout</button>
+        <button onClick={logoutHandler} className='btn medium'>Logout</button>
       </div>
     </div>
   )

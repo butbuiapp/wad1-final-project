@@ -5,7 +5,7 @@ function ProductList({products, onDeleteProduct}) {
 
   return (
     <div className="product">
-      <h1>Product List</h1>
+      <h3>Product List</h3>
       <div className='table'>
         <div className='table-header'>
           <div className='table-header-cell'>ID</div>
