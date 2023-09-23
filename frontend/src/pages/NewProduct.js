@@ -45,7 +45,7 @@ function NewProduct() {
   }
 
   function changeHandler(e) {
-    setProduct({ ...product, [e.target.name]: e.target.value.trim() });
+    setProduct({ ...product, [e.target.name]: e.target.value });
   }
 
   return (
@@ -101,8 +101,8 @@ function NewProduct() {
           </div>
           
           <div className="actions">
-            <button onClick={addProductHandler} className="btn btn-edit medium">Save</button>
-            <button onClick={cancelHandler} className="btn btn-cancel medium ml">Cancel</button>
+            <button onClick={addProductHandler} className="btn btn-edit small">&nbsp;Add&nbsp;</button>
+            <button onClick={cancelHandler} className="btn btn-cancel small ml">Cancel</button>
           </div>
         </form>
       </div>

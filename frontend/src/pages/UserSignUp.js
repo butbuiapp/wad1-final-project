@@ -39,20 +39,23 @@ function UserSignUp() {
 ])
 
   async function submitHandler(e) {
-    console.log(e);
+    // console.log(e);
     // const { password, email} = user;
     e.preventDefault();
 
     console.log(validatePassword());
 
     if(!validatePassword()) {
-      console.log('criteria ', passCriteria);
+      // console.log('criteria ', passCriteria);
 
       setIsCriteriaVisible(true);
       return;
     };
 
-    const res = await UserService.singup({});
+    const res = await UserService.singup({
+                  email: emailRef.current.value,
+                  password: passwordRef.current.value
+                });
     if (res) {
       if (res.success) {
         localStorage.setItem('token', res.data);

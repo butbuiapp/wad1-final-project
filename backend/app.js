@@ -23,7 +23,7 @@ app.post("/signup", (req, res) => {
   saveData(COLLECTIONS.USERS);
 
   const token = createToken(user);
-  res.send({ succes: true, data: token });
+  res.send({ success: true, data: token });
 });
 
 app.post("/login", (req, res) => {
