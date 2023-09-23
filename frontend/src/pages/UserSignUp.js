@@ -13,7 +13,6 @@ function UserSignUp() {
 
   const navigate = useNavigate();
   const [error, setError] = useState();
-  // const [user, setUser] = useState({ email: '', password: '', confirmPassword: '' });
   const [isCriteriaVisible, setIsCriteriaVisible] = useState(false);
   const [passCriteria, setPassCriteria] = useState([
     {
@@ -53,22 +52,18 @@ function UserSignUp() {
       return;
     };
 
-    // const res = await UserService.singup({ email, password });
-    // if (res) {
-    //   if (res.success) {
-    //     localStorage.setItem('token', res.data);
-    //     navigate('/');
-    //   } else {
-    //     setError(res.error);
-    //   }
-    // } else {
-    //   setError('There is something wrong. Please try again.');
-    // }
+    const res = await UserService.singup({});
+    if (res) {
+      if (res.success) {
+        localStorage.setItem('token', res.data);
+        navigate('/');
+      } else {
+        setError(res.error);
+      }
+    } else {
+      setError('There is something wrong. Please try again.');
+    }
   }
-
-  // function changeHandler(e) {
-  //   setUser({ ...user, [e.target.name]: e.target.value });
-  // }
 
   const validatePassword = () => {
     setIsCriteriaVisible(false);
@@ -176,7 +171,6 @@ function UserSignUp() {
                     </>
                   }
                   </div> 
-
               </>
               }
           </div>
@@ -184,7 +178,7 @@ function UserSignUp() {
           
 
           <div className='actions'>
-            <button className='btn ml'>Create account</button>
+            <button className='btn medium ml'>Create account</button>
           </div>
         </form>
 

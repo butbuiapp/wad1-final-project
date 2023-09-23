@@ -5,14 +5,15 @@
 
 .product .table-header {
   display: table-header-group;
-  background-color: gray;
-  font-weight: bold;
+  background-color: #e8e8e8;
+  font-weight: 500;
+  line-height: 3;
 }
 
 .product .table-header-cell {
   display: table-cell;
   padding: 5px;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid #eee;
 }
 
 .product .table-row {
@@ -21,8 +22,8 @@
 
 .product .table-body-cell {
   display: table-cell;
-  padding: 5px;
-  border-bottom: 1px solid black;
+  padding: 10px;
+  border-bottom: 1px solid #eee;
 }
 
 .add-product {
