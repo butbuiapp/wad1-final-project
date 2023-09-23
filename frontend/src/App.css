@@ -32,6 +32,15 @@
 
 .btn-edit {
   background-color:#0ba3d5;
+  /* background-color:#336699; */
+}
+
+.valid-criteria {
+  color: rgb(6, 170, 6);
+}
+
+.invalid-criteria {
+  color: rgb(250, 45, 9);
 }
 
 .chatbot-btn {
