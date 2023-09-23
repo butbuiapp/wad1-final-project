@@ -2,7 +2,7 @@
   position: fixed;
   right: 35px;
   bottom: 90px;
-  width: 420px;
+  width: 400px;
   background: #fff;
   border-radius: 15px;
   overflow: hidden;
@@ -14,52 +14,61 @@
   transform-origin: bottom right;
   transition: all 0.1s ease; */
 }
-
+.chatbot form {
+  padding: 1rem;
+}
 .chatbot .chat-input {
   display: flex;
   gap: 5px;
-  position: absolute;
   bottom: 0;
   width: 100%;
   background: #fff;
-  padding: 3px 20px;
   border-top: 1px solid #ddd;
 }
 .chat-input input {
-  height: 20px;
+  height: 35px;
   width: 100%;
   border: none;
   outline: none;
   resize: none;
   max-height: 180px;
-  padding: 15px 15px 15px 0;
-  font-size: 0.95rem;
+  font-size: 1rem;
+  padding: 4px 10px;
+  font-weight: 500;
 }
 
 .chatbot .chatbox {
   overflow-y: auto;
   height: 400px;
-  padding-left: 10px;
+  padding-left: 0;
+  display: flex;
+  flex-direction: column;
 }
 
 .chatbox .incoming {
+  padding: 4px 10px;
   color: #fff;
-  cursor: default;
-  text-align: right;
   line-height: 32px;
   align-self: flex-end;
   background: #724ae8;
   border-radius: 4px;
   margin: 0 10px 7px 5px;
+  max-width: 60%;
 }
 
 .chatbox .outgoing {
-  cursor: default;
+  padding: 4px 10px;
   line-height: 32px;
-  align-self: flex-end;
+  align-self: flex-start;
   border-radius: 4px;
   margin: 0 10px 7px 0;
   background: #f2f2f2;
   list-style: none;
+  max-width: 60%;
+}
+
+.chatbox li > p {
+  margin-top: 0;
+  margin-bottom: 0;
 }
 

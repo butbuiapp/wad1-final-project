@@ -50,7 +50,7 @@ function Chatbot() {
 
         <ul className="chatbox">
           {messages.map((obj, index) => (
-            <li className={`chat ${obj.type}`}><p>{obj.message}</p></li>
+            <li key={index} className={`chat ${obj.type}`}><p>{obj.message}</p></li>
           ))}
 
         </ul>
