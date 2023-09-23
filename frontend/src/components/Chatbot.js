@@ -20,7 +20,13 @@ function Chatbot() {
     // get response from openAI
     const res = await OpenAIService.getAnswer(userInput);
     if (res) {
-      console.log('response from openAI===', res); //res.choices[0].text
+      const message = res.choices[0].message;
+      newMessages.push(
+        {
+          type: 'outgoing',
+          message: message.content,
+        }
+      ); 
     } else {
       newMessages.push(
         {

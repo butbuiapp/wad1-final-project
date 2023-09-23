@@ -7,17 +7,17 @@ class OpenAIService {
     dangerouslyAllowBrowser: true
   });
 
-  endpoint = "https://api.openai.com/v1/engines/text-davinci-003/completions";
+  endpoint = "https://api.openai.com/v1/chat/completions";
 
   PARAMS = {
     temperature: 0.5,
-    max_tokens: 256
+    max_tokens: 256,
+    model: 'gpt-3.5-turbo',
   }
 
   async getAnswer(input) {
     try {
-      const prompt = `if the question is related to weather, answer it: ${input}`;
-      const data = { ...this.PARAMS, prompt };
+      const data = { ...this.PARAMS, messages: [{role : 'user', content: input}], };
 
       const res = await axios.post(
         this.endpoint,
@@ -30,10 +30,11 @@ class OpenAIService {
         }
       );
       console.log('res==', res.data)
+
+      return res.data;
     } catch (error) {
       return null;
     }
-
   }
 }
 

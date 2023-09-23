@@ -101,8 +101,8 @@ function NewProduct() {
           </div>
           
           <div className="actions">
-            <button onClick={addProductHandler} className="btn btn-edit">Add</button>
-            <button onClick={cancelHandler} className="btn btn-cancel ml">Cancel</button>
+            <button onClick={addProductHandler} className="btn btn-edit medium">Save</button>
+            <button onClick={cancelHandler} className="btn btn-cancel medium ml">Cancel</button>
           </div>
         </form>
       </div>
