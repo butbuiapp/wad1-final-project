@@ -52,7 +52,10 @@ function UserSignUp() {
       return;
     };
 
-    const res = await UserService.singup({});
+    const res = await UserService.singup({
+                  email: emailRef.current.value,
+                  password: passwordRef.current.value
+                });
     if (res) {
       if (res.success) {
         localStorage.setItem('token', res.data);
