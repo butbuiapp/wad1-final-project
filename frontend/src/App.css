@@ -41,24 +41,3 @@
 .invalid-criteria {
   color: rgb(250, 45, 9);
 }
-
-.chatbot-btn {
-  background-color: #724ae8;
-  color: #fff;
-  border-radius: 10px;
-  border: none;
-  padding: 1rem;
-  position: absolute;
-  right: 10px;
-  bottom: 10px;
-  font-size: 1.2rem;
-  font-weight: 600;
-  cursor: pointer;
-  width: 150px;
-}
-
-.chatbot-btn:hover {
-  background-color: #7651e6;
-  transform: translateY(-5px);
-  transition: all 0.1s ease-in;
-}

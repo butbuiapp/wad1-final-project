@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
 import Home from "../../pages/Home";
 import axios from 'axios';
@@ -51,6 +51,15 @@ describe("Home", () => {
     );
     const id = await screen.findByText(`79ddd908-7ce1-4384-b9cc-8667ef09d045`)
     expect(id).toBeInTheDocument();
+  });
+
+  it('should be able to click Add New Product', async () => {
+    render(
+      <MockHome />
+    );
+    const addProductBtn = screen.getByRole("button", {name: /Add New Product/i})
+    fireEvent.click(addProductBtn);
+
   });
 
 })
