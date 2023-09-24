@@ -6,16 +6,11 @@
   background: #fff;
   border-radius: 15px;
   overflow: hidden;
-  /* opacity: 0; */
   box-shadow: 0 0 128px 0 rgba(0,0,0,0.1),
   0 32px 64px -48px rgba(0,0,0,0.5);
-  /* pointer-events: none;
-  transform: scale(0.5);
-  transform-origin: bottom right;
-  transition: all 0.1s ease; */
 }
 .chatbot form {
-  padding: 1rem;
+  padding: 0 1rem;
 }
 .chatbot .chat-input {
   display: flex;
@@ -24,6 +19,7 @@
   width: 100%;
   background: #fff;
   border-top: 1px solid #ddd;
+  padding: 4px 0;
 }
 .chat-input input {
   height: 35px;
