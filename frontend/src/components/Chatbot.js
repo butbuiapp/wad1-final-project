@@ -36,6 +36,9 @@ function Chatbot() {
       );      
     }
     setMessages([...messages, ...newMessages]);
+
+    // clear input
+    setUserInput('');
   }
 
   useEffect(() => {
@@ -46,6 +49,11 @@ function Chatbot() {
     }
     ]);
   }, [])
+  
+  const sendMessage = (e) => {
+    submitHandler(e);
+  }
+  const changeInput = (e) => setUserInput(e.target.value);
 
   return (
     <div className='chatbot'>
@@ -58,13 +66,12 @@ function Chatbot() {
           {messages.map((obj, index) => (
             <li key={index} className={`chat ${obj.type}`}><p>{obj.message}</p></li>
           ))}
-
         </ul>
         <div className='chat-input'>
-          <input type='text' name="userInput" placeholder="Enter a message..."
-            onChange={(e) => setUserInput(e.target.value)} />
+          <input value={userInput} type='text' name="userInput" placeholder="Enter a message..."
+            onChange={changeInput} />
+            <button className='btn small' onClick={sendMessage}>Send</button>
         </div>
-
       </form>
     </div>
   )
