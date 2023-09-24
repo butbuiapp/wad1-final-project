@@ -14,7 +14,6 @@ function useValidate() {
       return false;
     }
 
-    console.log(isNumber(product.price))
     // check if price is number
     if (!isNumber(product.price)) {
       setError("Price should be number");

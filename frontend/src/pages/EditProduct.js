@@ -85,7 +85,8 @@ function EditProduct() {
             </div>
             <div className="form_control">
               <input type="text" name="name" value={product.name} ref={nameRef}
-                onChange={changeHandler} required className="input-text" />
+                onChange={changeHandler} required className="input-text" 
+                aria-label="name" />
             </div>
           </div>
 
