@@ -1,19 +1,52 @@
 import React from "react";
-import { render, screen } from "@testing-library/react";
+import { render, screen, fireEvent } from "@testing-library/react";
 import Login from "../../pages/Login";
-import { BrowserRouter as Router } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
+import axios from 'axios';
 
-test("render login page", async () => {
-  render(
-    <Router initialEntries={["/login"]}>
-      <Login />
-    </Router>
-  );
+jest.mock("axios");
 
-  const login = await screen.findAllByText("Login");
-  expect(login.length).toBe(2);
+const MockLogin = () => {
+  return (
+    <BrowserRouter>
+      <Login/>
+    </BrowserRouter>
+  )
+}
 
-  const signup = await screen.findByText("Sign up");
-  expect(signup).toBeInTheDocument();
+describe("Login", () => {
+  beforeEach(() => {
+    const mockResponse = {
+      data: {
+          "success": true,
+          "data": "token"
+      }
+    }
+    axios.get.mockResolvedValueOnce(mockResponse);
+  })
 
-});
+  it("render login page", async () => {
+    render(<MockLogin />);
+  
+    const login = await screen.findAllByText("Login");
+    expect(login.length).toBe(2);
+  
+    const signup = await screen.findByText("Sign up");
+    expect(signup).toBeInTheDocument();
+  
+  });
+
+  it("should be able to type into input and click login button", async () => {
+    render(<MockLogin />);  
+  
+    const emailInput = screen.getByLabelText("email");
+    fireEvent.change(emailInput, { target: { value: "test@miu.edu" } });
+    const passwordInput = screen.getByLabelText("password");
+    fireEvent.change(passwordInput, { target: { value: "123" } });
+
+    const loginBtn = screen.getByRole("button", {name: /Login/});
+    fireEvent.click(loginBtn);  
+  
+  });
+})
+
