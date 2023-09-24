@@ -25,17 +25,20 @@ function ProductDetails({ product, onDeleteProduct }) {
 
   return (
     <>
-      <div className='table-row'>
-        <div className='table-body-cell'>{product.id}</div>
-        <div className='table-body-cell'>{product.name}</div>
-        <div className='table-body-cell'>{product.price}</div>
-        <div className='table-body-cell'>{product.origin}</div>
-        <div className='table-body-cell'>{product.instock ? 'Yes' : 'No'}</div>
-        <div className='table-body-cell' style={{display: 'flex', gap: '10px'}}>
-          <button onClick={editHandler} className="btn btn-edit small">&nbsp;Edit&nbsp;</button>
-          <button onClick={deleteHandler} className="btn btn-cancel small">Delete</button>
-        </div>
-      </div>
+      <tr className="list-item">
+        <td>{product.id}</td>
+        <td>{product.name}</td>
+        <td>{product.price}</td>
+        <td>{product.origin}</td>
+        <td>{product.instock ? 'Yes' : 'No'}</td>
+        <td>
+          <div style={{display: 'flex', gap: '10px'}}>
+            <button onClick={editHandler} className="btn btn-edit small">Edit</button>
+            <button onClick={deleteHandler} className="btn btn-cancel small">Delete</button>
+          </div>
+        </td>
+      </tr>
+
       {showConfirmDialog && <ConfirmDialog
         message='Are you sure to delete this product?'
         onConfirm={deleteProduct}

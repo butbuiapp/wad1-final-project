@@ -1,6 +1,29 @@
-.product .table {
-  display: table;
+.product .product-list {
+  height: 60vh;
+  overflow-y: auto;
+}
+.product .product-list table {
   width: 100%;
+  border-spacing: 0;
+}
+
+.product .product-list table thead {
+  position: sticky;
+  top: 0;
+}
+.product .product-list table thead tr {
+  background-color: #e8e8e8;
+  line-height: 2;
+}
+
+.product .product-list table thead tr th {
+  text-align: left;
+  padding: 0.5rem 1rem;
+}
+
+.product .product-list table tbody tr td {
+  padding: 0.5rem 1rem;
+  border-bottom: 1px solid #e1e1e1;
 }
 
 .product .table-header {
@@ -79,3 +102,7 @@
   margin-top: 2rem;
   margin-bottom: 1rem;
 }
+
+/* .list-item tr td {
+  text-align: left;
+} */
