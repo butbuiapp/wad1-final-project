@@ -44,7 +44,7 @@ function Login() {
             </div>
             <div className='form_control'>
               <input type='email' name="email" onChange={changeHandler} required
-                className='input' />
+                className='input' aria-label="email" />
             </div>
           </div>
           <div className='form_control_wrapper'>
@@ -53,7 +53,7 @@ function Login() {
             </div>
             <div className='form_control'>
               <input type='password' name="password" onChange={changeHandler}
-                required className='input' />
+                required className='input' aria-label="password"/>
             </div>
           </div>
           <div className='actions'>
