@@ -1,5 +1,5 @@
 import React from "react";
-import { render, screen, fireEvent, waitFor } from "@testing-library/react";
+import { render, screen, fireEvent, waitFor, act } from "@testing-library/react";
 import Login from "../../pages/Login";
 import { BrowserRouter } from "react-router-dom";
 import axios from 'axios';
@@ -24,7 +24,8 @@ describe("Login", () => {
 
     const signup = await screen.findByText("Sign up");
     expect(signup).toBeInTheDocument();
-
+    fireEvent.click(signup);
+    
   });
 
   it("should be able to type into input and click Login button", async () => {
@@ -43,9 +44,9 @@ describe("Login", () => {
   it("should call post API when click Login button", async () => {
     const mockResponse = {
       data: {
-        "success": false,
-        "error": "Wrong email"
-    }
+        "success": true,
+        "data": "token-1111"
+      }
     }
     axios.post.mockResolvedValueOnce(mockResponse);
 
@@ -55,12 +56,19 @@ describe("Login", () => {
     const password = "123";
 
     const emailInput = screen.getByLabelText("email");
-    fireEvent.change(emailInput, { target: { value: email } });
+    act(() => {
+      fireEvent.change(emailInput, { target: { value: email } });
+    });
+    
     const passwordInput = screen.getByLabelText("password");
-    fireEvent.change(passwordInput, { target: { value: password } });
+    act(() => {
+      fireEvent.change(passwordInput, { target: { value: password } });
+    });    
 
     const loginBtn = screen.getByRole("button", { name: /Login/ });
-    fireEvent.click(loginBtn);
+    act(() => {
+      fireEvent.click(loginBtn);
+    });    
 
     // Wait for Axios POST request to resolve
     await waitFor(() => {
@@ -68,5 +76,6 @@ describe("Login", () => {
     });
 
   });
+
 
 })
