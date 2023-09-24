@@ -21,11 +21,6 @@
   padding: 0.5rem 1rem;
 }
 
-.product .product-list table tbody {
-  height: 60vh;
-  overflow: scroll;
-}
-
 .product .product-list table tbody tr td {
   padding: 0.5rem 1rem;
   border-bottom: 1px solid #e1e1e1;
