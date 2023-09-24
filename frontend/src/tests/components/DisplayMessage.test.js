@@ -5,6 +5,8 @@ import DisplayMessage from "../../components/DisplayMessage";
 test("display message", () => {
   render(<DisplayMessage type="error" message="Invalid email" />);
 
-  expect(screen.getByText("Invalid email")).toBeInTheDocument();
+  const divElement = screen.getByText("Invalid email");
+  expect(divElement).toBeInTheDocument();
+  expect(divElement).toHaveClass("error");
 
 });
