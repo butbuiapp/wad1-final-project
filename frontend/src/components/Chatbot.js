@@ -36,6 +36,9 @@ function Chatbot() {
       );      
     }
     setMessages([...messages, ...newMessages]);
+
+    // clear input
+    setUserInput('');
   }
 
   useEffect(() => {
@@ -62,7 +65,7 @@ function Chatbot() {
         </ul>
         <div className='chat-input'>
           <input type='text' name="userInput" placeholder="Enter a message..."
-            onChange={(e) => setUserInput(e.target.value)} />
+            value={userInput} onChange={(e) => setUserInput(e.target.value)} />
         </div>
 
       </form>
