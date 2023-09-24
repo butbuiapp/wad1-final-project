@@ -24,6 +24,7 @@
   width: 100%;
   background: #fff;
   border-top: 1px solid #ddd;
+  padding: 4px 0;
 }
 .chat-input input {
   height: 35px;
