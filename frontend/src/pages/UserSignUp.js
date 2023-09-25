@@ -1,9 +1,10 @@
 import '../css/Login.css';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import DisplayMessage from '../components/DisplayMessage';
 import Footer from '../components/Footer';
 import UserService from '../services/UserService';
+import ValidationError from '../components/ValidationError';
 
 function UserSignUp() {
   const emailRef = useRef(null);
@@ -16,22 +17,22 @@ function UserSignUp() {
   const [isCriteriaVisible, setIsCriteriaVisible] = useState(false);
   const [passCriteria, setPassCriteria] = useState([
     {
-      key: '1',
+      id: 1,
       name: 'Length is at least 10 letters or digits',
       isValid: false,
     },
     {
-      key: '2',
+      id: 2,
       name: 'Contains at least a lower case letter',
       isValid: false,
     },
     { 
-      key: '3',
+      id: 3,
       name: 'Contains at least an upper case letter',
       isValid: false,
     },
     {
-      key: '4',
+      id: 4,
       name: 'Contains at least a special case letter',
       isValid: false,
     },
@@ -39,18 +40,16 @@ function UserSignUp() {
 ])
 
   async function submitHandler(e) {
-    // console.log(e);
-    // const { password, email} = user;
     e.preventDefault();
 
     console.log(validatePassword());
 
     if(!validatePassword()) {
-      // console.log('criteria ', passCriteria);
-
+      setIsCriteriaVisible(true);
+    } else {
       setIsCriteriaVisible(true);
       return;
-    };
+    }
 
     const res = await UserService.singup({
                   email: emailRef.current.value,
@@ -78,9 +77,7 @@ function UserSignUp() {
     const hasOneUpperCase = new RegExp('(?=.*[A-Z])');
     const hasOneSpecialChar = new RegExp('(?=.*[^A-Za-z0-9])');
 
-    // const copyOfCriteria = passCriteria.map(item => ({ ...item, isValid: false }));
-    //setPassCriteria(copyOfCriteria);
-    // console.log({copyOfCriteria})
+    passCriteria.forEach(item => item.isValid = false);
 
     if(password === confirmPassword) {
       setIsMatching(true);
@@ -89,35 +86,35 @@ function UserSignUp() {
     }
 
     if(hasLengthOf10.test(password)) {
-      replaceCriteria(0);
-    }
-
-    if(hasOneLowerCase.test(password)) {
       replaceCriteria(1);
     }
 
-    if(hasOneUpperCase.test(password)) {
+    if(hasOneLowerCase.test(password)) {
       replaceCriteria(2);
     }
 
-    if(hasOneSpecialChar.test(password)) {
+    if(hasOneUpperCase.test(password)) {
       replaceCriteria(3);
+    }
+
+    if(hasOneSpecialChar.test(password)) {
+      replaceCriteria(4);
     }
 
     return (passCriteria.every(item => item.isValid));
   }
 
-  const replaceCriteria = (index) => {
-    const found = passCriteria[index];
-    found.isValid = true;
-
-    passCriteria.splice(index, 1, found);
-
-    console.log('found ', found);
-    setPassCriteria(passCriteria);
+  const replaceCriteria = (id) => {
+    setPassCriteria(prev =>
+      prev.map(criteria => {
+        if(id === criteria.id) {
+          return { ...criteria, isValid: true };
+        } else {
+          return criteria;
+        }
+      })
+    )
   }
-
-  console.log('rendered');
 
   return (
     <div className='login'>
@@ -157,19 +154,14 @@ function UserSignUp() {
             </div>
           </div>
 
+          {}
+
           <div >
               { isCriteriaVisible && <>
                 <div style={{ padding: '1rem', lineHeight: '2'}}>
                   { !isMatching ? <div className='invalid-criteria'> <b>Passwords do not match</b> </div> :
                     <>
-                      { passCriteria.map((item) =>
-                        {
-                          return (
-                            <div key={item.key}>
-                              {item.isValid ? <b className='valid-criteria'>{item.name}</b> : <b className='invalid-criteria'>{item.name}</b>}
-                            </div>
-                          )
-                        }
+                      { passCriteria.map((item) => <ValidationError key={item.id} item={item} />
                       )}
                     </>
                   }
@@ -177,9 +169,7 @@ function UserSignUp() {
               </>
               }
           </div>
-
           
-
           <div className='actions'>
             <button className='btn medium ml'>Create account</button>
           </div>
