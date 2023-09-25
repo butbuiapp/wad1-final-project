@@ -1,5 +1,5 @@
 import '../css/Login.css';
-import { useEffect, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import DisplayMessage from '../components/DisplayMessage';
 import Footer from '../components/Footer';
@@ -36,8 +36,7 @@ function UserSignUp() {
       name: 'Contains at least a special case letter',
       isValid: false,
     },
-
-])
+  ])
 
   async function submitHandler(e) {
     e.preventDefault();
