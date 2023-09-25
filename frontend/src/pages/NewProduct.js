@@ -39,7 +39,8 @@ function NewProduct() {
     }
   }
 
-  function cancelHandler() {
+  function cancelHandler(e) {
+    e.preventDefault();
     // back to product list
     navigate("/");
   }
@@ -101,7 +102,7 @@ function NewProduct() {
           </div>
           
           <div className="actions">
-            <button onClick={addProductHandler} className="btn btn-edit small">&nbsp;Add&nbsp;</button>
+            <button className="btn btn-edit small">&nbsp;Add&nbsp;</button>
             <button onClick={cancelHandler} className="btn btn-cancel small ml">Cancel</button>
           </div>
         </form>
