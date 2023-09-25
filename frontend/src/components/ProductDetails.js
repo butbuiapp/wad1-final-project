@@ -19,7 +19,7 @@ function ProductDetails({ product, onDeleteProduct }) {
         <td>{product.name}</td>
         <td>{product.price}</td>
         <td>{product.origin}</td>
-        <td>{product.instock==="true" ? 'Yes' : 'No'}</td>
+        <td>{product.instock===true ? 'Yes' : 'No'}</td>
         <td>
           <div style={{display: 'flex', gap: '10px'}}>
             <button onClick={editHandler} className="btn btn-edit small">Edit</button>
