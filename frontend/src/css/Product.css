@@ -26,27 +26,8 @@
   border-bottom: 1px solid #e1e1e1;
 }
 
-.product .table-header {
-  display: table-header-group;
-  background-color: #e8e8e8;
-  font-weight: 500;
-  line-height: 3;
-}
-
-.product .table-header-cell {
-  display: table-cell;
-  padding: 5px;
-  border-bottom: 1px solid #e1e1e1;
-}
-
-.product .table-row {
-  display: table-row;
-}
-
-.product .table-body-cell {
-  display: table-cell;
-  padding: 10px;
-  border-bottom: 1px solid #e1e1e1;
+.product .product-list table tbody tr:hover {
+  background-color: #f3f3f3;
 }
 
 .add-product {
@@ -102,7 +83,3 @@
   margin-top: 2rem;
   margin-bottom: 1rem;
 }
-
-/* .list-item tr td {
-  text-align: left;
-} */

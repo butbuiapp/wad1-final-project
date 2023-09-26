@@ -17,14 +17,18 @@ const MockLogin = () => {
 describe("Login", () => {
 
   it("render login page", async () => {
-    render(<MockLogin />);
+    await act( async () => render(<MockLogin/>));
+    // render(<MockLogin />);
 
     const login = await screen.findAllByText("Login");
     expect(login.length).toBe(2);
 
     const signup = await screen.findByText("Sign up");
     expect(signup).toBeInTheDocument();
-    fireEvent.click(signup);
+
+    await act(async () => {
+      fireEvent.click(signup);
+    });  
     
   });
 
@@ -50,23 +54,23 @@ describe("Login", () => {
     }
     axios.post.mockResolvedValueOnce(mockResponse);
 
-    render(<MockLogin />);
+    await act( async () => render(<MockLogin/>));
 
     const email = "test@miu.edu";
     const password = "123";
 
     const emailInput = screen.getByLabelText("email");
-    act(() => {
+    await act(async () => {
       fireEvent.change(emailInput, { target: { value: email } });
     });
     
     const passwordInput = screen.getByLabelText("password");
-    act(() => {
+    await act(async () => {
       fireEvent.change(passwordInput, { target: { value: password } });
     });    
 
     const loginBtn = screen.getByRole("button", { name: /Login/ });
-    act(() => {
+    await act(async () => {
       fireEvent.click(loginBtn);
     });    
 

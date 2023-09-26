@@ -1,70 +1,26 @@
 import '../css/Product.css';
 import ProductDetails from './ProductDetails';
+import ConfirmDialog from "../modal/ConfirmDialog";
+import { useState } from "react";
 
-function ProductList({products, onDeleteProduct}) {
-  // const products1 = [
-  //   {
-  //     id: "79ddd908-7ce1-4384-b9cc-8667ef09d045",
-  //     name: "iphone 1",
-  //     price: 100,
-  //   },
-  //   {
-  //     id: "79ddd918-7ce1-4384-b9cc-8667ef09d045",
-  //     name: "iphone 1",
-  //     price: 100,
-  //   },
-  //   {
-  //     id: "79ddd9065-7ce1-4384-b9cc-8667ef09d045",
-  //     name: "iphone 1",
-  //     price: 100,
-  //   },
-  //   {
-  //     id: "79dde9065-7ce1-4384-b9cc-8667ef09d045",
-  //     name: "iphone 1",
-  //     price: 100,
-  //   },
-  //   {
-  //     id: "79dddp065-7ce1-4384-b9cc-8667ef09d045",
-  //     name: "iphone 1",
-  //     price: 100,
-  //   },
-  //   {
-  //     id: "79ddd8065-7ce1-4384-b9cc-8667ef09d045",
-  //     name: "iphone 1",
-  //     price: 100,
-  //   },
-  //   {
-  //     id: "79ddd1065-7ce1-4384-b9cc-8667ef09d045",
-  //     name: "iphone 1",
-  //     price: 100,
-  //   },
-  //   {
-  //     id: "79ddd6065-7ce1-4384-b9cc-8667ef09d045",
-  //     name: "iphone 1",
-  //     price: 100,
-  //   },
-  //   {
-  //     id: "79ddd6065-7c11-4384-b9cc-8667ef09d045",
-  //     name: "iphone 1",
-  //     price: 100,
-  //   },
-  //   {
-  //     id: "79ddd6065-7ce3-4384-b9cc-8667ef09d045",
-  //     name: "iphone 1",
-  //     price: 100,
-  //   },
-  //   {
-  //     id: "79ddd6065-7ce9-4384-b9cc-8667ef09d045",
-  //     name: "iphone 1",
-  //     price: 100,
-  //   },
-  //   {
-  //     id: "79ddd6065-7ce9-4384-b9cc-8667ef09da45",
-  //     name: "iphone 1",
-  //     price: 100,
-  //   },
-  // ]
-  // console.log(products1)
+function ProductList({ products, onDeleteProduct }) {
+  const [showConfirmDialog, setShowConfirmDialog] = useState(false);
+  const [productId, setProductId] = useState();
+
+  function deleteProduct(id) {
+    setProductId(id);
+    setShowConfirmDialog(true);
+  }
+
+  function deleteHandler() {
+    onDeleteProduct(productId);
+    setShowConfirmDialog(false);
+  }
+
+  function cancelHandler() {
+    setShowConfirmDialog(false);
+  }
+
   return (
     <div className="product">
       <h1>Product List</h1>
@@ -82,15 +38,22 @@ function ProductList({products, onDeleteProduct}) {
           </thead>
 
           <tbody>
-            { products.map((prod) => (
-                <ProductDetails
-                  key={prod.id}
-                  product={prod} 
-                  onDeleteProduct={onDeleteProduct}/>
-              ))
+            {products.map((prod) => (
+              <ProductDetails
+                key={prod.id}
+                product={prod}
+                onDeleteProduct={deleteProduct} />
+            ))
             }
           </tbody>
         </table>
+
+        {showConfirmDialog && <ConfirmDialog
+          message='Are you sure to delete this product?'
+          onConfirm={deleteHandler}
+          onCancel={cancelHandler}
+        />}
+
       </div>
     </div>
   )

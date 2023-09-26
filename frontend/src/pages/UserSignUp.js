@@ -1,5 +1,5 @@
 import '../css/Login.css';
-import React, { useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import DisplayMessage from '../components/DisplayMessage';
 import Footer from '../components/Footer';
@@ -41,15 +41,13 @@ function UserSignUp() {
   async function submitHandler(e) {
     e.preventDefault();
 
-    console.log(validatePassword());
-
-    if(!validatePassword()) {
-      setIsCriteriaVisible(true);
+    if (await validatePassword()) {
+      setIsCriteriaVisible(false);
     } else {
       setIsCriteriaVisible(true);
       return;
     }
-
+    
     const res = await UserService.singup({
                   email: emailRef.current.value,
                   password: passwordRef.current.value
@@ -66,7 +64,7 @@ function UserSignUp() {
     }
   }
 
-  const validatePassword = () => {
+  const validatePassword = async () => {
     setIsCriteriaVisible(false);
     const password = passwordRef.current.value;
     const confirmPassword = confirmPasswordRef.current.value;
@@ -85,34 +83,30 @@ function UserSignUp() {
     }
 
     if(hasLengthOf10.test(password)) {
-      replaceCriteria(1);
+      await replaceCriteria(1);
     }
 
     if(hasOneLowerCase.test(password)) {
-      replaceCriteria(2);
+      await replaceCriteria(2);
     }
 
     if(hasOneUpperCase.test(password)) {
-      replaceCriteria(3);
+      await replaceCriteria(3);
     }
 
     if(hasOneSpecialChar.test(password)) {
-      replaceCriteria(4);
+      await replaceCriteria(4);
     }
 
-    return (passCriteria.every(item => item.isValid));
+    return (passCriteria.every(item => {
+      return item.isValid;
+    }));
   }
 
-  const replaceCriteria = (id) => {
-    setPassCriteria(prev =>
-      prev.map(criteria => {
-        if(id === criteria.id) {
-          return { ...criteria, isValid: true };
-        } else {
-          return criteria;
-        }
-      })
-    )
+  const replaceCriteria = async (id) => {
+    const idx = passCriteria.findIndex(c => c.id === id);
+    passCriteria[idx].isValid = true;
+    setPassCriteria(passCriteria);
   }
 
   return (
