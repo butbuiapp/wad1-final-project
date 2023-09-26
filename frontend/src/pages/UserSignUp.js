@@ -36,13 +36,10 @@ function UserSignUp() {
       name: 'Contains at least a special case letter',
       isValid: false,
     },
-
-])
+  ])
 
   async function submitHandler(e) {
     e.preventDefault();
-
-    // console.log(validatePassword());
 
     if (await validatePassword()) {
       setIsCriteriaVisible(false);
