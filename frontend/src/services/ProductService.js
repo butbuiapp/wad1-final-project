@@ -27,6 +27,7 @@ class ProductService {
   async updateProduct(product) {
     try {
       setToken();
+      product.instock = /true/.test(product.instock);
       const res = await axios.put(`/products/${product.id}`, product);
       return res.data;
     } catch (err) {
