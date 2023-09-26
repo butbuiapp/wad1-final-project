@@ -63,7 +63,8 @@ function NewProduct() {
             </div>
             <div className="form_control">
               <input type="text" name="name" value={product.name} ref={nameRef}
-                onChange={changeHandler} required className="input-text" />
+                onChange={changeHandler} required className="input-text" 
+                aria-label="name" />
             </div>
           </div>
 
@@ -73,7 +74,8 @@ function NewProduct() {
             </div>
             <div className="form_control">
               <input type="text" name="price" value={product.price}
-                onChange={changeHandler} required className="input-text" />
+                onChange={changeHandler} required className="input-text" 
+                aria-label="price" />
             </div>
           </div>
 
@@ -83,8 +85,8 @@ function NewProduct() {
             </div>
             <div className="form_control">
               <input type="text" name="origin" value={product.origin}
-                onChange={changeHandler} required
-                className="input-text" />
+                onChange={changeHandler} required className="input-text" 
+                aria-label="origin" />
             </div>
           </div>
 

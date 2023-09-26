@@ -28,8 +28,7 @@ describe('User Sign', () => {
     expect(signupTitle.length).toBe(2);
   })
 
-  
-  it('handles form submission and validation', async () => {
+  it('handles invalid data', async () => {
     render(<MockUserSignUp />);
 
     const emailInput = screen.getByPlaceholderText('Email');
@@ -38,8 +37,8 @@ describe('User Sign', () => {
     const createAccountButton = screen.getByRole("button", { name: /Create account/ });
 
     fireEvent.change(emailInput, { target: { value: 'test@example.com' } });
-    fireEvent.change(passwordInput, { target: { value: 'TestPassword1!' } });
-    fireEvent.change(confirmPasswordInput, { target: { value: 'TestPassword1!' } });
+    fireEvent.change(passwordInput, { target: { value: '123' } });
+    fireEvent.change(confirmPasswordInput, { target: { value: '123' } });
 
     fireEvent.click(createAccountButton);
 
@@ -56,6 +55,30 @@ describe('User Sign', () => {
       expect(screen.getByText('Contains at least a special case letter')).toBeInTheDocument();
     });
 
+  });
+  
+  it('handles form submission', async () => {
+    const mockResponse = {
+      data: {
+        "success": true,
+        "data": "token-1111"
+      }
+    }
+    axios.post.mockResolvedValueOnce(mockResponse);
+
+    render(<MockUserSignUp />);
+
+    const emailInput = screen.getByPlaceholderText('Email');
+    const passwordInput = screen.getByPlaceholderText('Password');
+    const confirmPasswordInput = screen.getByPlaceholderText('Confirm password');
+    const createAccountButton = screen.getByRole("button", { name: /Create account/ });
+
+    fireEvent.change(emailInput, { target: { value: 'test@example.com' } });
+    fireEvent.change(passwordInput, { target: { value: 'TestPassword1!' } });
+    fireEvent.change(confirmPasswordInput, { target: { value: 'TestPassword1!' } });
+
+    fireEvent.click(createAccountButton);
+
     await waitFor(() => {
       expect(axios.post).toHaveBeenCalledWith('/signup',{
         email: 'test@example.com',
@@ -63,6 +86,9 @@ describe('User Sign', () => {
       });
     });
   });
+
+  
+
 })
 
 
